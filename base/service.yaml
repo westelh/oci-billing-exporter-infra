@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: oci-billing-exporter
+  labels:
+    app: oci-billing-exporter
+spec:
+  selector:
+    app: oci-billing-exporter 
+  ports:
+  - name: http-metrics
+    protocol: TCP
+    port: 8080
+    targetPort: 8080

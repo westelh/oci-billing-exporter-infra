@@ -1,0 +1,19 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: oci-billing-exporter
+  namespace: default
+  labels:
+    app: oci-billing-exporter
+    monitoring: kube-prometheus-stack
+spec:
+  selector:
+    matchLabels:
+      app: oci-billing-exporter
+  endpoints:
+  - port: http-metrics
+    path: /metrics
+    scheme: http
+  namespaceSelector:
+    matchNames:
+    - default
